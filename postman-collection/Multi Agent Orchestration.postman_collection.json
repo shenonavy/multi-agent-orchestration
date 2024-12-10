@@ -233,6 +233,108 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Mock API",
+			"item": [
+				{
+					"name": "Submit a New Claim",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"policy_id\": \"000011\",\r\n    \"damage_description\": \"test\",\r\n    \"vehicle\": \"Alto\",\r\n    \"photos\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/insurance/claims",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"insurance",
+								"claims"
+							]
+						},
+						"description": "Generated from cURL: curl --location 'http://localhost:3001/insurance/claims' \\\r\n--header 'Content-Type: application/json' \\\r\n--data '{\r\n    \"policy_id\": \"000011\",\r\n    \"damage_description\": \"test\",\r\n    \"vehicle\": \"Alto\",\r\n    \"photos\": []\r\n}'"
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve Claim Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/insurance/claims?claim_id=3whff3anr",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"insurance",
+								"claims"
+							],
+							"query": [
+								{
+									"key": "claim_id",
+									"value": "3whff3anr"
+								}
+							]
+						},
+						"description": "Generated from cURL: curl --location 'http://localhost:3001/insurance/claims?claim_id=3whff3anr'"
+					},
+					"response": []
+				},
+				{
+					"name": "Calculate Insurance Premium",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"policy_id\": \"544555\",\r\n    \"current_coverage\": 100,\r\n    \"new_coverage\": 500\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/insurance/premium",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"insurance",
+								"premium"
+							]
+						},
+						"description": "Generated from cURL: curl --location 'http://localhost:3001/insurance/premium' \\\r\n--header 'Content-Type: application/json' \\\r\n--data '{\r\n    \"policy_id\": \"544555\",\r\n    \"current_coverage\": 100,\r\n    \"new_coverage\": 500\r\n}'"
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
