@@ -358,3 +358,6 @@ dist
 
 mock-insurance-api/node_modules/
 mock-insurance-api/dist/
+
+# Ignore drawio
+*.drawio
