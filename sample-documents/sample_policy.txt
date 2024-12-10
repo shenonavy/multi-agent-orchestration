@@ -2,8 +2,8 @@ Insurance Policy Document
 Policy Number: POL-2023-001
 
 1. Policyholder Information
-   - Name: John Smith
-   - Email: john.smith@example.com
+   - Name: Tim
+   - Email: tim@example.com
    - Phone: (555) 123-4567
    - Address: 123 Main St, Anytown, ST 12345
 

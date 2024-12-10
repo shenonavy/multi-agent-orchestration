@@ -1,0 +1,238 @@
+{
+	"info": {
+		"_postman_id": "6307588f-b1d7-40d0-8ea2-81337168881e",
+		"name": "Multi Agent Orchestration",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17455713"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\":\"tim\",\"password\":\"123456\",\"email\":\"tim@example.com\",\"role\":\"user\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"auth",
+								"register"
+							]
+						},
+						"description": "Generated from cURL: curl -X POST \"http://localhost:8000/auth/register\" -H \"Content-Type: application/json\" -d '{\"username\":\"user\",\"password\":\"testuser\",\"email\":\"user@example.com\",\"role\":\"user\"}'"
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "tim",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/auth/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"auth",
+								"token"
+							]
+						},
+						"description": "Generated from cURL: curl -X POST \"http://localhost:8000/auth/token\" -H \"Content-Type: application/x-www-form-urlencoded\" --data-raw 'username=user&password=testuser'"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"123456\",\r\n    \"email\": \"admin@example.com\",\r\n    \"role\": \"admin\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"auth",
+								"register"
+							]
+						},
+						"description": "Generated from cURL: curl -X POST http://localhost:8000/auth/register \\\r\n  -H \"Content-Type: application/json\" \\\r\n  -d '{\r\n    \"username\": \"admin\",\r\n    \"password\": \"testadmin\",\r\n    \"email\": \"admin@example.com\",\r\n    \"role\": \"admin\"\r\n  }'"
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiIsInJvbGUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5AZXhhbXBsZS5jb20iLCJleHAiOjE3MzM4MTQ1MjV9.LzTvmMzx28y0LstBmjDMTCjDP4EYm_gJv30rFO5lkYA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/auth/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"auth",
+								"token"
+							]
+						},
+						"description": "Generated from cURL: curl -X POST \"http://localhost:8000/auth/token\" -H \"Content-Type: application/x-www-form-urlencoded\" --data-raw 'username=admin&password=testadmin'"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Upload Policy",
+			"item": [
+				{
+					"name": "Upload Policy",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer $TOKEN"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/"
+								},
+								{
+									"key": "policy_number",
+									"value": "POL-2023-001",
+									"type": "text"
+								},
+								{
+									"key": "user_email",
+									"value": "tim@example.com",
+									"type": "text"
+								},
+								{
+									"key": "policyholder_name",
+									"value": "tim",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/admin/upload-policy",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"admin",
+								"upload-policy"
+							]
+						},
+						"description": "Generated from cURL: curl -X POST http://localhost:8000/admin/upload-policy \\\r\n  -H \"Authorization: Bearer $TOKEN\" \\\r\n  -F \"file=@/\" \\\r\n  -F \"policy_number=POL-2023-001\" \\\r\n  -F \"user_email=user@example.com\" \\\r\n  -F \"policyholder_name=Example user\""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

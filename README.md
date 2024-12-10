@@ -7,12 +7,12 @@ docker compose up -d
 
 2. Register a new user:
 ```bash
-curl -X POST "http://localhost:8000/auth/register" -H "Content-Type: application/json" -d '{"username":"user","password":"testuser","email":"user@example.com","role":"user"}'
+curl -X POST "http://localhost:8000/auth/register" -H "Content-Type: application/json" -d '{"username":"tim","password":"123456","email":"tim@example.com","role":"user"}'
 ```
 
-3. Goto http://localhost:3000 and login with user@example.com and testuser
+3. Goto http://localhost:3000 and login with tim and testuser
 ```bash
-curl -X POST "http://localhost:8000/auth/token" -H "Content-Type: application/x-www-form-urlencoded" --data-raw 'username=user&password=testuser'
+curl -X POST "http://localhost:8000/auth/token" -H "Content-Type: application/x-www-form-urlencoded" --data-raw 'username=tim&password=123456'
 ```
 
 4. Ask the question: I want to submit a new claim for my vehicle damage
@@ -27,7 +27,7 @@ curl -X POST http://localhost:8000/auth/register \
   -H "Content-Type: application/json" \
   -d '{
     "username": "admin",
-    "password": "testadmin",
+    "password": "123456",
     "email": "admin@example.com",
     "role": "admin"
   }'
@@ -35,7 +35,7 @@ curl -X POST http://localhost:8000/auth/register \
 
 Then, get an access token:
 ```bash
-curl -X POST "http://localhost:8000/auth/token" -H "Content-Type: application/x-www-form-urlencoded" --data-raw 'username=admin&password=testadmin'
+curl -X POST "http://localhost:8000/auth/token" -H "Content-Type: application/x-www-form-urlencoded" --data-raw 'username=admin&password=123456'
 ```
 
 Finally, upload the policy (replace $TOKEN with the token from step 2):
