@@ -4,7 +4,7 @@ import { Message } from "../types/chat";
 import { XCircleIcon } from "@heroicons/react/24/solid";
 
 const ChatResult = dynamic(() => import("./atoms/ChatResult"), {
-  loading: () => <div>Loading chat interface...</div>,
+  loading: () => <div>Loading chat...</div>,
 });
 
 export default function ChatInterface() {
