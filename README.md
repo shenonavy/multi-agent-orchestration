@@ -5,7 +5,7 @@
 | Resource                 | Link                                                                                        |
 |--------------------------|---------------------------------------------------------------------------------------------|
 | Demo Video               | [Video](https://drive.google.com/file/d/1Z2OoHb1Icddng1IHR5FZapMSYPWTfi8g/view?usp=sharing) |
-| Presentation             | [Presentation](https://docs.google.com/presentation/d/1E4ejXR8WAoW0TRAw0n8Y87TGORiyKE7i/edit?usp=sharing&ouid=104273624844049636845&rtpof=true&sd=true) |
+| Presentation             | [Presentation](https://docs.google.com/presentation/d/1q2W3_uqtSDLbmOjDrcF6gOGqy_RTLN5M/edit?usp=sharing&ouid=104273624844049636845&rtpof=true&sd=true) |
 
 ## Installation
 
