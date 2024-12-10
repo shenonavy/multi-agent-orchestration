@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface PolicyCardProps {
   policyDetails: {
@@ -26,7 +26,9 @@ export default function PolicyCard({ policyDetails }: PolicyCardProps) {
           <p className="text-gray-600">Features</p>
           <ul className="list-disc list-inside">
             {policyDetails.features.map((feature, index) => (
-              <li key={index} className="text-sm">{feature}</li>
+              <li key={index} className="text-sm">
+                {feature}
+              </li>
             ))}
           </ul>
         </div>
