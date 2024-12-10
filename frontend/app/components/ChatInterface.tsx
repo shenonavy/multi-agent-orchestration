@@ -1,6 +1,11 @@
-import { useState, useRef, useEffect } from "react";
+import dynamic from "next/dynamic";
+import { useState, useRef, useEffect, Suspense } from "react";
 import { Message } from "../types/chat";
 import { XCircleIcon } from "@heroicons/react/24/solid";
+
+const ChatResult = dynamic(() => import("./atoms/ChatResult"), {
+  loading: () => <div>Loading chat interface...</div>,
+});
 
 export default function ChatInterface() {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -92,29 +97,9 @@ export default function ChatInterface() {
     >
       <div className="flex-1 overflow-y-auto p-4 space-y-4 min-h-0">
         {messages.map((message, index) => (
-          <div
-            key={index}
-            className={`flex ${
-              message.role === "user" ? "justify-end" : "justify-start"
-            }`}
-          >
-            <div
-              className={`max-w-[80%] rounded-lg p-4 ${
-                message.role === "user"
-                  ? "bg-blue-500 text-white"
-                  : message.role === "system"
-                  ? "bg-red-500 text-white"
-                  : "bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100"
-              }`}
-            >
-              <p>{message.content}</p>
-              {message.source && (
-                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
-                  Source: {message.source}
-                </p>
-              )}
-            </div>
-          </div>
+          <Suspense key={index} fallback={<div>Loading...</div>}>
+            <ChatResult {...message} />
+          </Suspense>
         ))}
         <div ref={messagesEndRef} />
       </div>

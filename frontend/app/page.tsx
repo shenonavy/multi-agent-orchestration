@@ -1,15 +1,7 @@
 "use client";
-
-import dynamic from "next/dynamic";
-import { Suspense, useState, useEffect } from "react";
-
-const ChatInterface = dynamic(() => import("./components/ChatInterface"), {
-  loading: () => <div>Loading chat interface...</div>,
-});
-
-const LoginForm = dynamic(() => import("./components/LoginForm"), {
-  loading: () => <div>Loading login form...</div>,
-});
+import { useState, useEffect } from "react";
+import LoginForm from "./components/LoginForm";
+import ChatInterface from "./components/ChatInterface";
 
 export default function Home() {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
@@ -24,11 +16,7 @@ export default function Home() {
   };
 
   if (!isAuthenticated) {
-    return (
-      <Suspense fallback={<div>Loading...</div>}>
-        <LoginForm onLoginSuccess={handleLoginSuccess} />
-      </Suspense>
-    );
+    return <LoginForm onLoginSuccess={handleLoginSuccess} />;
   }
 
   return (
@@ -52,9 +40,7 @@ export default function Home() {
 
       <main className="flex-1 flex overflow-hidden">
         <div className="flex-1 flex">
-          <Suspense fallback={<div>Loading...</div>}>
-            <ChatInterface />
-          </Suspense>
+          <ChatInterface />
         </div>
       </main>
     </div>
