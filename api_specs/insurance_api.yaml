@@ -1,0 +1,137 @@
+openapi: 3.0.0
+info:
+  title: Insurance API
+  description: API for managing insurance claims and policies
+  version: 1.0.0
+servers:
+  - url: http://localhost:3001
+    description: Mock Insurance API server
+paths:
+  /insurance/claims:
+    get:
+      summary: Retrieve claim status
+      parameters:
+        - name: claim_id
+          in: query
+          required: true
+          schema:
+            type: string
+          description: Unique identifier of the claim
+      responses:
+        '200':
+          description: Claim found successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  claim_id:
+                    type: string
+                  status:
+                    type: string
+                  last_updated:
+                    type: string
+                    format: date-time
+        '404':
+          description: Claim not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                  claim_id:
+                    type: string
+    post:
+      summary: Submit a new claim
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - policy_id
+                - damage_description
+                - vehicle
+              properties:
+                policy_id:
+                  type: string
+                damage_description:
+                  type: string
+                vehicle:
+                  type: string
+                photos:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '201':
+          description: Claim created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  claim_id:
+                    type: string
+                  message:
+                    type: string
+        '400':
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+  /insurance/premium:
+    post:
+      summary: Calculate insurance premium
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - policy_id
+                - current_coverage
+                - new_coverage
+              properties:
+                policy_id:
+                  type: string
+                current_coverage:
+                  type: number
+                  description: Current coverage amount
+                new_coverage:
+                  type: number
+                  description: New coverage amount requested
+      responses:
+        '200':
+          description: Premium calculated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  policy_id:
+                    type: string
+                  current_premium:
+                    type: number
+                  new_premium:
+                    type: number
+                  difference:
+                    type: number
+                    description: Difference between new and current premium
+        '400':
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
