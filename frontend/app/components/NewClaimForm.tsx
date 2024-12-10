@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 interface NewClaimFormProps {
   onSubmit: (claimData: ClaimData) => void;
@@ -11,18 +11,21 @@ interface ClaimData {
   photos: File[];
 }
 
-export default function NewClaimForm({ onSubmit, onCancel }: NewClaimFormProps) {
+export default function NewClaimForm({
+  onSubmit,
+  onCancel,
+}: NewClaimFormProps) {
   const [formData, setFormData] = useState<ClaimData>({
-    vehicle: '',
-    damageDescription: '',
-    photos: []
+    vehicle: "",
+    damageDescription: "",
+    photos: [],
   });
 
   const handlePhotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
-      setFormData(prev => ({
+      setFormData((prev) => ({
         ...prev,
-        photos: [...Array.from(e.target.files!)]
+        photos: [...Array.from(e.target.files!)],
       }));
     }
   };
@@ -33,9 +36,12 @@ export default function NewClaimForm({ onSubmit, onCancel }: NewClaimFormProps) 
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow-md p-6 mb-4">
+    <form
+      onSubmit={handleSubmit}
+      className="bg-white rounded-lg shadow-md p-6 mb-4"
+    >
       <h3 className="text-xl font-semibold mb-4">Submit New Claim</h3>
-      
+
       <div className="space-y-4">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -44,7 +50,9 @@ export default function NewClaimForm({ onSubmit, onCancel }: NewClaimFormProps) 
           <input
             type="text"
             value={formData.vehicle}
-            onChange={(e) => setFormData(prev => ({ ...prev, vehicle: e.target.value }))}
+            onChange={(e) =>
+              setFormData((prev) => ({ ...prev, vehicle: e.target.value }))
+            }
             className="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500"
             placeholder="Year, Make, Model"
             required
@@ -57,7 +65,12 @@ export default function NewClaimForm({ onSubmit, onCancel }: NewClaimFormProps) 
           </label>
           <textarea
             value={formData.damageDescription}
-            onChange={(e) => setFormData(prev => ({ ...prev, damageDescription: e.target.value }))}
+            onChange={(e) =>
+              setFormData((prev) => ({
+                ...prev,
+                damageDescription: e.target.value,
+              }))
+            }
             className="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500"
             rows={4}
             placeholder="Describe the damage to your vehicle"
